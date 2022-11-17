@@ -1,0 +1,19 @@
+{
+  "name": "posts-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "load": "lite-server",
+    "compile": "tsc -w"
+  },
+  "keywords": [],
+  "author": "joydip",
+  "license": "ISC",
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1",
+    "typescript": "^4.9.3"
+  }
+}

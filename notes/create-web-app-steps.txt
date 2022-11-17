@@ -1,3 +1,4 @@
+JS based appliaction
 1. create app directory
 2. create package.json file (>npm init or npm init --yes)
 3. install babel
@@ -16,6 +17,44 @@
 	}
 6. create script in package.json file for transpilation using babel (in watch mode)
 	"compile":"babel <source-dir-name> --watch --out-dir <output-dir-name>"
+7. optional:
+	install application development server, such as lite-server
+	>npm i lite-server
+	create the script for running lite-server
+	"load":"lite-server"
+8. link require.js file from node_modules/requirejs folder and also the output directory's entry file (index.js)  with index.html file 
+	<script src='./node_modules/requirejs/require.js' data-main='./<output-dir-name>/<entry-file-name>.js'
+9. write code and design your application and resolve dependencies amongst the files
+10. transpile your code by running the script
+11. run the app-development server
+
+
+TS based appliaction
+1. create app directory
+2. create package.json file (>npm init or npm init --yes)
+3. install typescript (>npm i typescript -D)	
+4. install module loader:
+	requirejs (> npm i requirejs)
+5. configure tsc compiler (this configuration will be read by the tsc during runtime)
+	create tsconfig.json file at the root of the directory
+	configure: 
+	{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "target": "ES3",
+        "module": "AMD",
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "lib": [
+            "ES2015",
+            "DOM"
+        ]
+    }
+	}
+6. create script in package.json file for transpilation using tsc (in watch mode)
+	"compile":"tsc --watch"
 7. optional:
 	install application development server, such as lite-server
 	>npm i lite-server
