@@ -1,0 +1,21 @@
+{
+  "name": "user-interaction-app",
+  "version": "1.0.0",
+  "description": "calculator app",
+  "scripts": {
+    "compile": "babel src --watch --out-dir dist",
+    "load": "lite-server"
+  },
+  "author": "joydip",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-modules-amd": "^7.19.6",
+    "@babel/preset-env": "^7.20.2",
+    "lite-server": "^2.6.1"
+  },
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  }
+}

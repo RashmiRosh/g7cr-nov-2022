@@ -1,0 +1,41 @@
+1. JavaScript
+	- execution of JS code
+		a. preparation
+		b. execution
+	- execution context
+	- this, scope and variable-object property
+	- callback
+	- closure
+	- context binding
+	- prototype-based programming
+		- prototype
+		- function inheritance
+		- object inheritance
+	- asynchronous JS
+		- promise
+		- async and await
+	- new features of JS
+		- let,const keywords
+		- spread operator and rest operator
+		- object destructuring
+		- arrow function
+		- templated string or string interpolation
+		- class, constructor, supre and extends keywords
+
+2. Artifacts
+	- app configuration (package.json) 
+	- transpilation
+		JS => babel
+			a. core babel packages: @babel/core and @babel/cli
+			b. plugin packages: @babel/plugin-transformer.... (ES6/common js to AMD conversion)
+			c. preset packages: @babel/preset-env
+			d. babel configuration file (.babelrc/babel.config.json/...)
+		TS => typescript (tsc)
+	- app dev server
+		- liver server or lite-server or webpack-dev-server
+	- module loader
+		- requirejs or systemjs or ts-loader
+	- bundling
+		- webpack, browserify
+
+3. use interaction
