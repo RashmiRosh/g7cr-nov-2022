@@ -6,61 +6,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles/index.css">
 </head>
 
 <body>
-    <!-- <div id="root">
+    <div class="container">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radios" id="radioAdd" checked>
+            <label class="form-check-label" for="radioAdd">
+                Add
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="radios" id="radioSubtract">
+            <label class="form-check-label" for="radioSubtract">
+                Subtract
+            </label>
+        </div>
 
-    </div> -->
-
-    <div>
-        <input type="radio" id="radioAdd" name="radios"> &nbsp; Add
-
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-        <input type="radio" id="radioSubtract" name="radios">
-        &nbsp; Subtract
-
-    </div>
-    <div>
-        <table id="tblCalculation">
-            <tr>
-                <td>Enter 1st Value:&nbsp;</td>
-                <td>
-                    <input type="text" placeholder="enter 1st value here" id="txtFirst">
-                </td>
-            </tr>
-            <tr>
-                <td>Enter 2nd Value:&nbsp;</td>
-                <td>
-                    <input type="text" placeholder="enter 2nd value here" id="txtSecond">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="button" id="btnCalculate" value="Calculate">
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <br><br>
-    <div>
-        <table id="tblHistory">
-            <thead>
+        <div>
+            <table id="tblCalculation" class="table table-responsive">
                 <tr>
-                    <td>First Value</td>
-                    <td>Second Value</td>
-                    <td>Result</td>
+                    <td>Enter 1st Value:&nbsp;</td>
+                    <td>
+                        <input type="text" placeholder="enter 1st value here" id="txtFirst">
+                    </td>
                 </tr>
-            </thead>
-            <tbody id="tbodyHistory">
+                <tr>
+                    <td>Enter 2nd Value:&nbsp;</td>
+                    <td>
+                        <input type="text" placeholder="enter 2nd value here" id="txtSecond">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="button" id="btnCalculate" value="Calculate">
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-            </tbody>
-        </table>
+
+        <br><br>
+        <div>
+            <table id="tblHistory" class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <td>First Value</td>
+                        <td>Second Value</td>
+                        <td>Result</td>
+                    </tr>
+                </thead>
+                <tbody id="tbodyHistory">
+
+                </tbody>
+            </table>
+        </div>
     </div>
+
     <script src=" ./node_modules/requirejs/require.js" data-main="./dist/index.js"></script>
 </body>
 

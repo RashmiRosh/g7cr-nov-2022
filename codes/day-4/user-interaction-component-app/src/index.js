@@ -67,3 +67,13 @@ btnObj.addEventListener(
     'click',
     calculate
 )
+
+
+/*
+import { calculationForm } from "./components/calculation-form/calculation-form";
+
+const form = calculationForm()
+//render(document.getElementById('root'),form.template)
+document.getElementById('root').innerHTML = form.template
+form.controller()
+*/
