@@ -1,0 +1,15 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "rootDir": "source",
+        "outDir": "dist",
+        "target": "ES3",
+        "module": "AMD",
+        "lib": [
+            "DOM",
+            "ES2015"
+        ],
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    }
+}

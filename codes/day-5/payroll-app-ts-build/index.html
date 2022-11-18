@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll App</title>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <!-- <link rel="stylesheet" href="./node_modules/toastr/build/toastr.min.css"> -->
+
+    <link rel="stylesheet" href="./styles/theme.css">
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body>
+    <!--form design-->
+    <div class="container frmStyle">
+        <fieldset>
+            <legend>Make a choice:&nbsp;</legend>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="employeeRadios" id="radioDeveloper" checked>
+                <label class="form-check-label" for="radioDeveloper">
+                    Developer
+                </label>
+            </div>
+            <div class="form-check disabled">
+                <input class="form-check-input" type="radio" name="employeeRadios" id="radioHr">
+                <label class="form-check-label" for="radioHr">
+                    Hr
+                </label>
+            </div>
+        </fieldset>
+        <br><br>
+        <form id="frmEmployee">
+            <fieldset>
+                <legend>Enter Employee Data:</legend>
+
+                <div class="form-group">
+                    <label for="txtId" class="form-label mt-4">Id:&nbsp;</label>
+                    <input type="number" class="form-control" id="txtId" placeholder="Enter id" name="id">
+                </div>
+                <div class="form-group">
+                    <label for="txtName" class="form-label mt-4">Name:&nbsp;</label>
+                    <input type="text" class="form-control" id="txtName" placeholder="Enter Name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="txtBasicPay" class="form-label mt-4">Basic Pay:&nbsp;</label>
+                    <input type="number" class="form-control" id="txtBasicPay" placeholder="Enter basic"
+                        name="basicPay">
+                </div>
+                <div class="form-group">
+                    <label for="txtDaPay" class="form-label mt-4">Da Pay:&nbsp;</label>
+                    <input type="number" class="form-control" id="txtDaPay" placeholder="Enter da" name="daPay">
+                </div>
+                <div class="form-group">
+                    <label for="txtHraPay" class="form-label mt-4">Hra Pay:&nbsp;</label>
+                    <input type="number" class="form-control" id="txtHraPay" placeholder="Enter hra" name="hraPay">
+                </div>
+                <div class="form-group">
+                    <label for="txtExtraPay" class="form-label mt-4" id="lblExtraPay">Incentive Pay:&nbsp;</label>
+                    <input type="number" class="form-control" id="txtExtraPay" placeholder="Enter Incentive"
+                        name="extraPay">
+                </div>
+                <br>
+                <div class="btnStyles">
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <br><br><br>
+    <!--table design-->
+    <div class="container">
+        <table class="table table-hover">
+            <thead class="theadStyle">
+                <tr>
+                    <th scope="col">type</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Basic Payment</th>
+                    <th scope="col">Da Payment</th>
+                    <th scope="col">Hra Payment</th>
+                    <th scope="col">Gratuity/Incentive Payment</th>
+                    <th scope="col">Total Salary</th>
+                </tr>
+            </thead>
+            <tbody id="tbodyEmployee">
+                <!-- <tr class="table-dark">
+                <th scope="row">Dark</th>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td>Column content</td>
+            </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="./node_modules/requirejs/require.js" data-main="./dist/index.js"></script>
+    <!-- <script src="./node_modules/toastr/build/toastr.min.js"></script> -->
+</body>
+
+</html>
