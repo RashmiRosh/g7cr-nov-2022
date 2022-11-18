@@ -2,9 +2,12 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { resolve } = require('path')
 const webpackConfig = {
-    entry: resolve(__dirname, 'src', 'index.ts'),
+    entry: {
+        main: resolve(__dirname, 'src', 'index.ts'),
+        calc: resolve(__dirname, 'src', 'calculation.ts')
+    },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: resolve(__dirname, 'dist')
     },
     module: {
