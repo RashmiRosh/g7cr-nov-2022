@@ -2,15 +2,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { resolve } = require('path')
 const webpackConfig = {
-    entry: resolve(__dirname, 'src', 'index.js'),
+    entry: resolve(__dirname, 'src', 'index.ts'),
     output: {
         filename: 'bundle.js',
         path: resolve(__dirname, 'dist')
     },
     module: {
         rules: [{
-            test: /\.js$/,
-            use: 'babel-loader',
+            test: /\.ts$/,
+            use: 'ts-loader',
             exclude: /node_modules/
         }, {
             test: /\.(htm|html)$/,
@@ -21,7 +21,7 @@ const webpackConfig = {
         }]
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.ts', '.tsx', '.js']
     },
     plugins: [
         new HtmlWebpackPlugin({
