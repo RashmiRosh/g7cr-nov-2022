@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "rootDir": "src",
+        "outDir": "dist",
+        "target": "ES3",
+        "module": "CommonJS",
+        "lib": [
+            "ES2015"
+        ],
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    }
+}
