@@ -1,0 +1,38 @@
+[
+    {
+        "name": "anil",
+        "id": 1,
+        "basicPay": 1000,
+        "daPay": 2000,
+        "hraPay": 3000,
+        "totalSalary": 10000,
+        "incentivePay": 4000
+    },
+    {
+        "name": "sunil",
+        "id": 2,
+        "basicPay": 2000,
+        "daPay": 3000,
+        "hraPay": 4000,
+        "totalSalary": 14000,
+        "gratuityPay": 5000
+    },
+    {
+        "name": "joydip",
+        "id": 3,
+        "basicPay": 3000,
+        "daPay": 4000,
+        "hraPay": 5000,
+        "totalSalary": 18000,
+        "incentivePay": 6000
+    },
+    {
+        "name": "vinod",
+        "id": 4,
+        "basicPay": 4000,
+        "daPay": 5000,
+        "hraPay": 6000,
+        "totalSalary": 22000,
+        "gratuityPay": 7000
+    }
+]
