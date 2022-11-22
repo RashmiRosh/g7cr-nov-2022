@@ -7,7 +7,9 @@ import { mapRequest } from "./middlewares/request-mapper";
 
 config()
 const PORT = process.env.PORT
-const server = createServer(
+const server = createServer()
+server.on(
+    'request',
     (req, res) => mapRequest(req, res)
 )
 const controller = new ApiController()
