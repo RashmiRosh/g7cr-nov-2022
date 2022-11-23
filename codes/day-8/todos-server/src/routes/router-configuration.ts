@@ -6,13 +6,15 @@ const routerMiddleware = Router()
 //request to fetch all Todos
 routerMiddleware.get(
     BASE_URL,
-    () => { }
+    (req, res) => { }
 )
 
 //request to fecth one Todo
 routerMiddleware.get(
     `${BASE_URL}/:todoId`,
-    () => { }
+    (req, res) => {
+
+    }
 )
 
 //request to add a todo
