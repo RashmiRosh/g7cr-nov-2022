@@ -3,9 +3,13 @@ import { IBusinessComponent } from "../../bo/abstraction/bo-contract";
 import { Todo } from "../../models/todo.model";
 import { Request, Response } from "express";
 import generateResponse from "../../utils/response-generator";
+import { injectable, inject } from "inversify";
+import { IMPLEMENTATION_TYPES } from "../../config/constants";
+import 'reflect-metadata'
 
+@injectable()
 export class TodosController implements IController {
-    constructor(private todosBo: IBusinessComponent<Todo>) {
+    constructor(@inject(IMPLEMENTATION_TYPES.BO_IMPLEMENTATION) private todosBo: IBusinessComponent<Todo>) {
 
     }
 
@@ -28,7 +32,6 @@ export class TodosController implements IController {
 
     getAllAction = async (req: Request, res: Response): Promise<void> => {
         try {
-            debugger
             const todos = await this.todosBo.getAll()
             const response = generateResponse<Todo>('found records', 200, todos)
 

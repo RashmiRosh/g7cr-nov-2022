@@ -1,10 +1,17 @@
 import { IBusinessComponent } from "../abstraction/bo-contract";
 import { Todo } from "../../models/todo.model";
 import { IDao } from "../../dao/abstraction/dao-contract";
+import { injectable, inject } from "inversify";
+import { IMPLEMENTATION_TYPES } from "../../config/constants";
+import 'reflect-metadata'
 
+
+@injectable()
 export class TodoBusinessComponent implements IBusinessComponent<Todo>{
 
-    constructor(private dao: IDao<Todo>) {
+    private dao: IDao<Todo>;
+    constructor(@inject(IMPLEMENTATION_TYPES.DAO_IMPLEMENTATION) _dao: IDao<Todo>) {
+        this.dao = _dao
     }
 
     async add(data: Todo): Promise<Todo> {

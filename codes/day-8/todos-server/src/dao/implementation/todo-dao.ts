@@ -1,8 +1,10 @@
 import { readFileSync, writeFileSync } from "fs";
+import { injectable } from "inversify";
 import { FILE_PATH } from "../../config/envdata";
 import { Todo } from "../../models/todo.model";
 import { IDao } from "../abstraction/dao-contract";
 
+@injectable()
 export class TodoDao implements IDao<Todo>{
     async writeData(arr: Todo[]): Promise<void> {
         try {
