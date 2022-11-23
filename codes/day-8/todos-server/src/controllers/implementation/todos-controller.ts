@@ -2,54 +2,92 @@ import { IController } from "../abstraction/controller-contract";
 import { IBusinessComponent } from "../../bo/abstraction/bo-contract";
 import { Todo } from "../../models/todo.model";
 import { Request, Response } from "express";
+import generateResponse from "../../utils/response-generator";
 
 export class TodosController implements IController {
     constructor(private todosBo: IBusinessComponent<Todo>) {
 
     }
 
-    async getAction(req: Request, res: Response): Promise<void> {
+    getAction = async (req: Request, res: Response): Promise<void> => {
         try {
             const todoId = Number(req.params.todoId)
             const todo = await this.todosBo.get(todoId)
-        } catch (error) {
+            const response = generateResponse<Todo>('found record', 200, todo)
 
+            // res.writeHead(200, { 'Content-Type': 'application/json' })
+            res.send(response)
+
+        } catch (error: any) {
+            const errResponse = generateResponse<Todo>(error.message, 500)
+
+            // res.writeHead(500, { 'Content-Type': 'application/json' })
+            res.send(errResponse)
         }
     }
 
-    async getAllAction(req: Request, res: Response): Promise<void> {
+    getAllAction = async (req: Request, res: Response): Promise<void> => {
         try {
+            debugger
             const todos = await this.todosBo.getAll()
-        } catch (error) {
+            const response = generateResponse<Todo>('found records', 200, todos)
 
+            // res.writeHead(200, { 'Content-Type': 'application/json' })
+            res.send(response)
+        } catch (error: any) {
+            const errResponse = generateResponse<Todo>(error.message, 500)
+
+            // res.writeHead(500, { 'Content-Type': 'application/json' })
+            res.send(errResponse)
         }
     }
 
-    async postAction(req: Request, res: Response): Promise<void> {
+    postAction = async (req: Request, res: Response): Promise<void> => {
         try {
             const todoData = <Todo>req.body
             const added = await this.todosBo.add(todoData)
-        } catch (error) {
+            const response = generateResponse<Todo>('added successfully', 201, added)
 
+            // res.writeHead(201, { 'Content-Type': 'application/json' })
+            res.send(response)
+        } catch (error: any) {
+            const errResponse = generateResponse<Todo>(error.message, 500)
+
+            // res.writeHead(500, { 'Content-Type': 'application/json' })
+            res.send(errResponse)
         }
     }
 
-    async putAction(req: Request, res: Response): Promise<void> {
+    putAction = async (req: Request, res: Response): Promise<void> => {
         try {
-            const id = Number(req.params.toodoId)
+            const id = Number(req.params.todoId)
             const todoData = <Todo>req.body
             const updated = await this.todosBo.update(todoData, id)
-        } catch (error) {
+            const response = generateResponse<Todo>('updated record', 201, updated)
 
+            // res.writeHead(201, { 'Content-Type': 'application/json' })
+            res.send(response)
+        } catch (error: any) {
+            const errResponse = generateResponse<Todo>(error.message, 500)
+
+            // res.writeHead(500, { 'Content-Type': 'application/json' })
+            res.send(errResponse)
         }
     }
 
-    async deleteAction(req: Request, res: Response): Promise<void> {
+    deleteAction = async (req: Request, res: Response): Promise<void> => {
         try {
             const id = Number(req.params.todoId)
             const deleted = await this.todosBo.remove(id)
-        } catch (error) {
+            const response = generateResponse<Todo>('deleted record', 201, deleted)
 
+            // res.writeHead(201, { 'Content-Type': 'application/json' })
+            res.send(response)
+        } catch (error: any) {
+            const errResponse = generateResponse<Todo>(error.message, 500)
+
+            // res.writeHead(500, { 'Content-Type': 'application/json' })
+            res.send(errResponse)
         }
     }
 }
