@@ -1,0 +1,25 @@
+import { StaticContent } from "../components/static-content/StaticContent";
+import { Welcome } from "../components/welcome/Welcome";
+import { createElement } from "react";
+
+export function App() {
+    const welcomeElement = Welcome()
+    const contentElement = StaticContent()
+
+    const h2Element = document.createElement('h2')
+    h2Element.innerText = 'Hello'
+    h2Element.setAttribute('style', 'background-color:burlywood')
+    console.log(h2Element)
+
+    console.log(welcomeElement)
+
+    const rootElement = createElement(
+        'div',
+        {},
+        [
+            welcomeElement,
+            createElement('hr'), contentElement
+        ]
+    )
+    return rootElement
+}

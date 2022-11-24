@@ -1,0 +1,15 @@
+import { StaticContent } from "../components/static-content/StaticContent";
+import { Welcome } from "../components/welcome/Welcome";
+
+export function App() {
+    const welcomeElement = Welcome()
+    const contentElement = StaticContent()
+
+    const rootElement = document.createElement('div')
+    rootElement.append(
+        welcomeElement,
+        document.createElement('hr'), contentElement
+    )
+
+    return rootElement
+}

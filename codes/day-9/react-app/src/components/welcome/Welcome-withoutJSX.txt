@@ -1,0 +1,18 @@
+import { createElement } from "react";
+export function Welcome() {
+    //data
+    const message = 'Welcome to React JS'
+
+    //design
+    const headerElement = createElement(
+        'h2',
+        {
+            id: 'mainHeader',
+            style: {
+                backgroundColor: 'burlywood'
+            }
+        },
+        message)
+
+    return headerElement
+}

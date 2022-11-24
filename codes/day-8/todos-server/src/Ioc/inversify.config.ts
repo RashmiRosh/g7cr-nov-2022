@@ -15,4 +15,6 @@ container.bind<IBusinessComponent<Todo>>(IMPLEMENTATION_TYPES.BO_IMPLEMENTATION)
 
 container.bind<IController>(IMPLEMENTATION_TYPES.CONTROLLER_IMPLEMENTATION).to(TodosController)
 
+// container.bind<IController>(IMPLEMENTATION_TYPES.POSTS_IMPLEMENTATION).to(PostsController)
+
 export default container

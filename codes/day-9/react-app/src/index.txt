@@ -1,0 +1,5 @@
+import { App } from "./App/App";
+
+const appElement = App()
+const placeholder = document.getElementById('root')
+placeholder.appendChild(appElement)

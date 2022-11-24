@@ -1,0 +1,13 @@
+export function Welcome() {
+    //data
+    const message = 'Welcome to React JS'
+
+    //design
+    const headerElement = document.createElement('h2')
+    headerElement.innerText = message
+
+    //style
+    headerElement.setAttribute('style', 'background-color:burlywood')
+
+    return headerElement
+}
