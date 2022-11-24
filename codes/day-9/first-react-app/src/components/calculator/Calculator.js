@@ -1,67 +1,93 @@
-import { computeHeadingLevel } from '@testing-library/react'
-import React from 'react'
+import React, { Component } from 'react'
 
-const Calculator = () => {
-    let first = 0
-    let second = 0
-    let result = 0
-
-    const updateFirst = (arg) => {
-        // console.log(arg)
-        // if (arg.target.value && arg.target.value !== '')
-        //     first = Number(arg.target.value)
-
-        // console.log(first)
-        first = arg
-        console.log(first)
-    }
-    const updateSecond = (arg) => {
-        second = arg
-        console.log(second)
+class Calculator extends Component {
+    constructor() {
+        super()
+        this.state = {
+            first: 0,
+            second: 0,
+            result: 0
+        }
     }
 
-    const design = (
-        <table>
-            <tr>
-                <td>First Value:&nbsp;</td>
-                <td>
-                    <input type='text' defaultValue={first.toString()} onChange={
-                        (e) => {
-                            if (e.target.value && e.target.value !== '')
-                                updateFirst(+e.target.value)
-                        }
-                    }></input>
-                </td>
-            </tr>
-            <tr>
-                <td>Second Value:&nbsp;</td>
-                <td>
-                    <input type='text' defaultValue={second.toString()} onChange={(e) => {
-                        if (e.target.value && e.target.value !== '')
-                            updateSecond(+e.target.value)
-                    }}></input>
-                </td>
-            </tr>
-            <tr>
-                <td colSpan="2">
-                    <button onClick={
-                        () => {
-                            result = first + second
-                            console.log(result)
-                        }
-                    }>Add</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Result:&nbsp;</td>
-                <td>
-                    <input type='text' defaultValue={result} value={result}></input>
-                </td>
-            </tr>
-        </table>
-    )
+    // updateFirstHandler = (arg) => {
+    //     this.setState({
+    //         first: arg
+    //     })
+    // }
+    // updateSecondHandler = (arg) => {
+    //     this.setState({
+    //         second: arg
+    //     })
+    // }
 
-    return design;
+    // updateResultHandler = () => {
+    //     this.setState(
+    //         (currentState) => {
+    //             let r = currentState.first + currentState.second
+    //             return {
+    //                 result: r
+    //             }
+    //         }
+    //     )
+    // }
+
+    updateStateHandler = (propName, propValue) => {
+        this.setState({
+            [propName]: propValue
+        })
+    }
+    render() {
+        const { first, second, result } = this.state
+        const design = (
+            <table>
+                <tr>
+                    <td>First Value:&nbsp;</td>
+                    <td>
+                        <input
+                            type='text'
+                            value={first}
+                            onChange={
+                                (e) => {
+                                    if (e.target.value && e.target.value !== '')
+                                        this.updateStateHandler('first', (+e.target.value))
+                                }
+                            }></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Second Value:&nbsp;</td>
+                    <td>
+                        <input
+                            type='text'
+                            value={second}
+                            onChange={
+                                (e) => {
+                                    if (e.target.value && e.target.value !== '')
+                                        this.updateStateHandler('second', (+e.target.value))
+                                }
+                            }></input>
+                    </td>
+                </tr>
+                <tr>
+                    <td colSpan="2">
+                        <button onClick={
+                            () => {
+                                this.updateStateHandler('result', (first + second))
+                            }
+                        }>Add</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Result:&nbsp;</td>
+                    <td>
+                        <input type='text' value={result}></input>
+                    </td>
+                </tr>
+            </table>
+        )
+        return design;
+    }
 }
 
 export default Calculator

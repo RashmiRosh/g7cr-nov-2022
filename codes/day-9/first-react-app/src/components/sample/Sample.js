@@ -45,8 +45,8 @@ class Sample extends Component {
         )
         return design
     }
-    componentDidMount() {
-        console.log('sample mounted')
-    }
+    // componentDidMount() {
+    //     console.log('sample mounted')
+    // }
 }
 export default Sample
