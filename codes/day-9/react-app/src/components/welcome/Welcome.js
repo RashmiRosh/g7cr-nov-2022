@@ -2,7 +2,7 @@ import React from "react";
 import './Welcome.css'
 //import styles from './Welcome.css'
 
-//args={messageToShow:'Welcome to React JS'}
+//args={messageToShow:'Welcome to React JS', callFn:call}
 export function Welcome(args) {
     //data
     //const message = 'Welcome to React JS'
@@ -20,8 +20,13 @@ export function Welcome(args) {
     const headerStyle = {
         backgroundColor: 'burlywood'
     }
+    const data = 100
     const headerElement = (
-        <h2 id="mainHeader" style={headerStyle} className='headerStyle'>
+        <h2 id="mainHeader" style={headerStyle} className='headerStyle' onMouseOver={
+            () => {
+                args.callFn(data)
+            }
+        }>
             {args.messageToShow}
         </h2>
     )
