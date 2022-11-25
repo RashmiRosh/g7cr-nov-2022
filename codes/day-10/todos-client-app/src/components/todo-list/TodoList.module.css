@@ -1,0 +1,7 @@
+.Header {
+  background-color: black;
+  color: whitesmoke;
+}
+.Spaces {
+  display: flex;
+}
