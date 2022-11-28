@@ -6,10 +6,8 @@ function withValue(OriginalComponent: FC<ComponentPropTypes> | ComponentClass<Co
     type WithValueStateType = {
         value: number,
     }
-    type WithValuePropsType = {
 
-    }
-    class WithValue extends Component<WithValuePropsType, WithValueStateType>{
+    class WithValue extends Component<any, WithValueStateType>{
         state: Readonly<WithValueStateType> = {
             value: 0,
         }
@@ -24,7 +22,7 @@ function withValue(OriginalComponent: FC<ComponentPropTypes> | ComponentClass<Co
         }
 
         render(): ReactNode {
-            return <OriginalComponent valueData={this.state.value} valueHandlerFn={this.valueHandler} />
+            return <OriginalComponent valueData={this.state.value} valueHandlerFn={this.valueHandler} {...this.props} />
         }
 
     }
