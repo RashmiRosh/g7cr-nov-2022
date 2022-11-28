@@ -1,18 +1,32 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Click from '../components/Click';
+import Edit from '../components/edit/Edit';
 import Hover from '../components/Hover';
+import ProductList from '../components/product-list/ProductList';
+import Toggle from '../components/toggle/Toggle';
 //import Parent from '../components/Parent';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Parent /> */}
-      <Click x={100} />
+    <Fragment>
+      <div className='BorderStyles'>
+        This is a div
+      </div>
+      <br /><br />
+      <div className="App">
+        {/* <Parent /> */}
+        <Click x={100} />
+        <br />
+        <br />
+        <Hover y={200} />
+      </div>
+      <br /><br />
+      <Edit />
       <br />
       <br />
-      <Hover y={200} />
-    </div>
+      <ProductList />
+    </Fragment>
   );
 }
 
