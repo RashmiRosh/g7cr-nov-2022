@@ -1,0 +1,21 @@
+1. mounting:
+	a. constructor
+	b. getStateDerivedStateFromProps
+	c. render() => RE
+	d. componentDidMount()
+	
+
+2. updation:
+	a. getStateDerivedStateFromProps
+	b. shouldComponentUpdate()
+	c. render()
+	d. componentDidUpdate()
+
+3. destruction
+	a. componentWillUnmount()
+
+4. error handling
+	a. getDerivedStateFromError()
+	b. componentDidCatch()
+
+
