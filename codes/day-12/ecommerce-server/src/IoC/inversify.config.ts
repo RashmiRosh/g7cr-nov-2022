@@ -9,6 +9,7 @@ import { EcommerceBoContract } from "../bo/ecommerce-bo.contract";
 const diContainer = new Container()
 
 diContainer.bind<EcommerDaoContarct<Product>>(diTokens.PRODUCTS_DAO_TOKEN).to(ProductsDao)
+
 diContainer.bind<EcommerceBoContract<Product>>(diTokens.PRODUCTS_BO_TOKEN).to(ProductsBo)
 
 export default diContainer
