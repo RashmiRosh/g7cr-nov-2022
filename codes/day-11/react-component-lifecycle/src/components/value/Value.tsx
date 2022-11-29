@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 type ValuePropsType = {
     valueData: number,
@@ -15,4 +15,13 @@ const Value = ({ valueData, valueDataHandler }: ValuePropsType) => {
     )
 }
 
-export default Value
+export default memo(Value)
+
+// function Memo(OC: FC | ComponentClass) {
+//     class WithMemo extends PureComponent {
+//         render(): React.ReactNode {
+//             return <OC {...this.props}/>
+//         }
+//     }
+//     return WithMemo
+// }

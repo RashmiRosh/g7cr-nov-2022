@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
+import { Todo } from '../../models/toto.model'
 import Name from '../name/Name'
+import TodoDetail from '../todo-detail/TodoDetail'
 import Value from '../value/Value'
-
-interface Todo { userId: number, id: number, title: string, completed: boolean }
 
 type ParentStateType = {
     value: number,
     name: string,
-    todos: Todo[]
+    todos: Todo[],
+    selectedId: number
 }
 type ParentPropsType = {}
 export default class Parent extends Component<ParentPropsType, ParentStateType> {
@@ -17,7 +18,8 @@ export default class Parent extends Component<ParentPropsType, ParentStateType> 
         this.state = {
             value: 0,
             name: '',
-            todos: []
+            todos: [],
+            selectedId: 0
         }
         console.log('Parent created')
     }
@@ -44,6 +46,11 @@ export default class Parent extends Component<ParentPropsType, ParentStateType> 
             () => console.log(this.state)
         )
     }
+    selectedIdHandler = (id: number) => {
+        this.setState({
+            selectedId: id
+        })
+    }
     render() {
         console.log('Parent rendered');
         return (
@@ -56,7 +63,14 @@ export default class Parent extends Component<ParentPropsType, ParentStateType> 
                                 {
                                     this.state.todos.map(
                                         (todo) => {
-                                            return <li key={todo.id}>{todo.title}</li>
+                                            return (
+                                                <li
+                                                    key={todo.id}
+                                                    onClick={() => this.selectedIdHandler(todo.id)
+                                                    }>
+                                                    {todo.title}
+                                                </li>
+                                            )
                                         }
                                     )
                                 }
@@ -68,6 +82,12 @@ export default class Parent extends Component<ParentPropsType, ParentStateType> 
                 <Name nameData={this.state.name} nameDataHandler={this.stateHandler} />
                 <br /><br />
                 <Value valueData={this.state.value} valueDataHandler={this.stateHandler} />
+                <br />
+                <br />
+                {
+                    this.state.selectedId > 0 &&
+                    <TodoDetail selectedTodoId={this.state.selectedId} />
+                }
             </div>
         )
     }

@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 
 type NamePropsType = {
     nameData: string,
     nameDataHandler: (propName: string, propValue: string) => void
 }
-export default class Name extends Component<NamePropsType, {}> {
+export default class Name extends PureComponent<NamePropsType, {}> {
     constructor(props: NamePropsType) {
         super(props)
         console.log('Name created')
