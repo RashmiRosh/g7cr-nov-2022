@@ -54,8 +54,17 @@ export class ProductsBo implements EcommerceBoContract<Product>{
             throw error
         }
     }
-    get(id: number): Promise<Product> {
-        throw new Error("Method not implemented.");
+    async get(id: number): Promise<Product> {
+        try {
+            const products = await this.dao.read()
+            const found = products.find((p) => p.productId === id)
+            if (found) {
+                return found
+            } else
+                throw new Error(`the product with id:${id} does not exist`)
+        } catch (error) {
+            throw error
+        }
     }
     getAll(): Promise<Product[]> {
         throw new Error("Method not implemented.");
