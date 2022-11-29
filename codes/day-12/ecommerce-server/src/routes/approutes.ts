@@ -6,7 +6,7 @@ export class AppRoutes {
     registerRoutes(): Router {
         const routerMiddleware = Router()
 
-        routerMiddleware.get(BASE_URL, () => { })
+        routerMiddleware.get(BASE_URL, (req, res) => { })
         routerMiddleware.get(`${BASE_URL}/:id`, () => { })
         routerMiddleware.post(BASE_URL, () => { })
         routerMiddleware.put(`${BASE_URL}/:id`, () => { })
