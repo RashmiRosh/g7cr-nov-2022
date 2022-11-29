@@ -3,3 +3,4 @@ const diTokens = {
     PRODUCTS_BO_TOKEN: 'PRODUCTS_BO_TOKEN',
     PRODUCTS_CONTROLLER_TOKEN: 'PRODUCTS_CONTROLLER_TOKEN'
 }
+export default diTokens
