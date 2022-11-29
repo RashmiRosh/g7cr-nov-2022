@@ -40,8 +40,19 @@ export class ProductsBo implements EcommerceBoContract<Product>{
             throw error
         }
     }
-    remove(id: number): Promise<Product> {
-        throw new Error("Method not implemented.");
+    async remove(id: number): Promise<Product> {
+        try {
+            const products = await this.dao.read()
+            const index = products.findIndex((p) => p.productId === id)
+            if (index !== -1) {
+                const deleted = products.splice(index, 1)[0]
+                await this.dao.write(products)
+                return deleted
+            } else
+                throw new Error(`the product with id:${id} does not exist`)
+        } catch (error) {
+            throw error
+        }
     }
     get(id: number): Promise<Product> {
         throw new Error("Method not implemented.");
