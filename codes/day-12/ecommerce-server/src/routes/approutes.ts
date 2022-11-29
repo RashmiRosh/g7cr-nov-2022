@@ -1,8 +1,17 @@
 import { Router } from "express";
+import { injectable, inject } from "inversify";
+import diTokens from "../constants/di-tokens";
+import { ECommerceControllerContract } from "../controller/ecommerce-controller.contract";
 
 const BASE_URL = process.env.BASE_URL || '/api/products'
 
+@injectable()
 export class AppRoutes {
+
+    constructor(@inject(diTokens.PRODUCTS_CONTROLLER_TOKEN) private productsController: ECommerceControllerContract) {
+
+    }
+
     registerRoutes(): Router {
         const routerMiddleware = Router()
 
