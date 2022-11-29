@@ -1,9 +1,7 @@
 import { readFileSync, writeFileSync } from "fs";
 import { Product } from "../models/product.model";
 import { EcommerDaoContarct } from "./ecommerce-dao.contract";
-import { config } from "dotenv";
 
-config()
 const FILE_PATH = process.env.FILE_PAH || './src/data/products.json'
 
 export class ProductsDao implements EcommerDaoContarct<Product>{
