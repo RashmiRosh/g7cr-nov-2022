@@ -25,8 +25,20 @@ export class ProductsBo implements EcommerceBoContract<Product>{
             throw error
         }
     }
-    update(data: Product, id: number): Promise<Product> {
-        throw new Error("Method not implemented.");
+    async update(data: Product, id: number): Promise<Product> {
+        try {
+            const products = await this.dao.read()
+            const index = products.findIndex((p) => p.productId === id)
+            if (index !== -1) {
+                data.productId = id
+                products.splice(index, 1, data)
+                await this.dao.write(products)
+                return data
+            } else
+                throw new Error(`the product with id:${id} does not exist`)
+        } catch (error) {
+            throw error
+        }
     }
     remove(id: number): Promise<Product> {
         throw new Error("Method not implemented.");
