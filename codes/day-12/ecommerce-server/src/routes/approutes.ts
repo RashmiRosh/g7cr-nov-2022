@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { injectable, inject } from "inversify";
 import diTokens from "../constants/di-tokens";
 import { ECommerceControllerContract } from "../controller/ecommerce-controller.contract";
+import { injectable, inject } from "inversify";
+import 'reflect-metadata'
 
 const BASE_URL = process.env.BASE_URL || '/api/products'
 

@@ -1,8 +1,8 @@
 import { Product } from "../models/product.model";
 import { EcommerceBoContract } from "./ecommerce-bo.contract";
 import { EcommerDaoContarct } from "../dao/ecommerce-dao.contract";
-import { injectable } from "inversify";
 import diTokens from "../constants/di-tokens";
+import { injectable, inject } from "inversify";
 import 'reflect-metadata'
 
 @injectable()

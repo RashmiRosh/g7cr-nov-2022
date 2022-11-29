@@ -1,9 +1,12 @@
 import { readFileSync, writeFileSync } from "fs";
 import { Product } from "../models/product.model";
 import { EcommerDaoContarct } from "./ecommerce-dao.contract";
+import { injectable } from "inversify";
+import 'reflect-metadata'
 
 const FILE_PATH = process.env.FILE_PAH || './src/data/products.json'
 
+@injectable()
 export class ProductsDao implements EcommerDaoContarct<Product>{
     async write(data: Product[]): Promise<void> {
         try {
