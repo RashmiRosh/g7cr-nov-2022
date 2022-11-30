@@ -1,0 +1,39 @@
+GET http://localhost:4000/api/products
+
+###
+GET http://localhost:4000/api/products/1
+
+###
+GET http://localhost:4000/api/products/100
+
+###
+POST http://localhost:4000/api/products
+Content-Type: application/json
+
+{   
+    "productName": "Test",
+    "productCode": "GDN-0012",
+    "releaseDate": "March 19, 2016",
+    "description": "Test",
+    "price": 500,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
+    "starRating": 5
+}
+
+###
+PUT http://localhost:4000/api/products/6
+Content-Type: application/json
+
+{   
+    "productName": "Test1",
+    "productCode": "GDN-0012",
+    "releaseDate": "March 19, 2016",
+    "description": "Test1",
+    "price": 600,
+    "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png",
+    "starRating": 5
+}
+
+###
+DELETE http://localhost:4000/api/products/6
+

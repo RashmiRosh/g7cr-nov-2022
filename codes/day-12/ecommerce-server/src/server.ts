@@ -21,5 +21,5 @@ app.use(appRoutes.registerRoutes())
 
 app.listen(
     PORT,
-    () => console.log(`ecommerce server is running at http://localhost:${PORT}/${BASE_URL}`)
+    () => console.log(`ecommerce server is running at http://localhost:${PORT}${BASE_URL}`)
 )

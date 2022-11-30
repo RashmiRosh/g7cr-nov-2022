@@ -16,11 +16,11 @@ export class AppRoutes {
     registerRoutes(): Router {
         const routerMiddleware = Router()
 
-        routerMiddleware.get(BASE_URL, (req, res) => { })
-        routerMiddleware.get(`${BASE_URL}/:id`, () => { })
-        routerMiddleware.post(BASE_URL, () => { })
-        routerMiddleware.put(`${BASE_URL}/:id`, () => { })
-        routerMiddleware.delete(`${BASE_URL}/:id`, () => { })
+        routerMiddleware.get(BASE_URL, this.productsController.getAllAction)
+        routerMiddleware.get(`${BASE_URL}/:id`, this.productsController.getAction)
+        routerMiddleware.post(BASE_URL, this.productsController.postAction)
+        routerMiddleware.put(`${BASE_URL}/:id`, this.productsController.putAction)
+        routerMiddleware.delete(`${BASE_URL}/:id`, this.productsController.deleteAction)
 
         return routerMiddleware
     }
