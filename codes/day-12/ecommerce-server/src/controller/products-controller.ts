@@ -32,7 +32,7 @@ export class ProductsController implements ECommerceControllerContract {
     getAllAction = async (req: Request<ParamsDictionary, any, any, ParsedQs, Record<string, any>>, res: Response<any, Record<string, any>>): Promise<void> => {
         try {
             const products = await this.bo.getAll()
-            const response = generateResponse<Product>('found records', 200, products)
+            const response = generateResponse<Product[]>('found records', 200, products)
             res.send(response)
         } catch (error: any) {
             const errResponse = generateResponse<Product>(error.message, 500)
