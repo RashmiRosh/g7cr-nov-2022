@@ -43,6 +43,7 @@ const productsSlice = createSlice({
 const { initiate: initiateActionCreator, success: successActionCreator, failure: failureActionCreator } = productsSlice.actions
 
 const productsReducer = productsSlice.reducer
+
 const loggerMiddleware = createLogger()
 
 const store = configureStore({
@@ -51,6 +52,7 @@ const store = configureStore({
     },
     middleware: [loggerMiddleware]
 })
+
 
 const fetchData = (dispatchFnRef: Dispatch) => {
     const initiateAction = initiateActionCreator()
