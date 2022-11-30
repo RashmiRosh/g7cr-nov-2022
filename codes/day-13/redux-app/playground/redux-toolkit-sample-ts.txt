@@ -1,0 +1,34 @@
+import { configureStore, createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface CounterState {
+    count: number
+}
+const initialCounterState: CounterState = {
+    count: 0
+}
+
+const counterSlice = createSlice({
+    name: 'counter',
+    initialState: initialCounterState,
+    reducers: {
+        increment: (state, action: PayloadAction<number>) => {
+            state.count += action.payload
+        },
+        decrement: (state, action: PayloadAction<number>) => {
+            state.count -= action.payload
+        }
+    }
+})
+
+const store = configureStore({
+    reducer: {
+        counter: counterSlice.reducer
+    }
+})
+const { increment: incrementActionCreator, decrement: decrementActionCreator } = counterSlice.actions
+
+store.subscribe(() => console.log(store.getState()))
+store.dispatch(incrementActionCreator(3))
+store.dispatch(decrementActionCreator(1))
+
+

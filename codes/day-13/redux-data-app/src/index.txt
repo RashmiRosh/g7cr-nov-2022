@@ -1,0 +1,100 @@
+const axios = require('axios')
+const { createStore, combineReducers, applyMiddleware } = require('redux')
+const { createLogger } = require('redux-logger')
+
+const initialProductsState = {
+    loading: true,
+    errorMessage: '',
+    products: []
+}
+
+const actionTypes = {
+    INITIATE: 'INITIATE',
+    SUCCESS: 'SUCCESS',
+    FAILURE: 'FAILURE'
+}
+
+const initiateActionCreator = () => {
+    return {
+        type: actionTypes.INITIATE
+    }
+}
+const successActionCreator = (data) => {
+    return {
+        type: actionTypes.SUCCESS,
+        payload: data
+    }
+}
+const failureActionCreator = (errMsg) => {
+    return {
+        type: actionTypes.FAILURE,
+        payload: errMsg
+    }
+}
+
+const productsReducer = (state = initialProductsState, action) => {
+    let newState;
+    switch (action.type) {
+        case actionTypes.INITIATE:
+            newState = {
+                ...state,
+                loading: true,
+                products: [],
+                errorMessage: ''
+            }
+            break;
+
+        case actionTypes.SUCCESS:
+            newState = {
+                ...state,
+                products: action.payload,
+                loading: false,
+                errorMessage: ''
+            }
+            break;
+
+        case actionTypes.FAILURE:
+            newState = {
+                ...state,
+                products: null,
+                loading: false,
+                errorMessage: action.payload
+            }
+            break;
+
+        default:
+            newState = { ...state }
+            break;
+    }
+    return newState
+}
+
+const rootReducer = combineReducers({
+    product: productsReducer
+})
+
+const loggerMiddleware = createLogger()
+const storeObject = createStore(
+    rootReducer,
+    applyMiddleware(loggerMiddleware)
+)
+//storeObject.subscribe(() => console.log(storeObject.getState()))
+
+const fetchData = (dispatchFnRef) => {
+    const initiateAction = initiateActionCreator()
+    dispatchFnRef(initiateAction)
+    axios
+        .get('http://localhost:4000/api/products')
+        .then(
+            (resp) => {
+                const productRecords = resp.data.data
+                const successAction = successActionCreator(productRecords)
+                dispatchFnRef(successAction)
+            },
+            (err) => {
+                const failureAction = failureActionCreator(err.message)
+                dispatchFnRef(failureAction)
+            }
+        )
+}
+fetchData(storeObject.dispatch)
