@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { Product } from "../models/product.model"
 import { initialProductsState } from "./initialStates"
 
 export const productsSlice = createSlice({
@@ -10,7 +11,7 @@ export const productsSlice = createSlice({
             state.products = []
             state.errorMessage = ''
         },
-        success: (state, action: PayloadAction<[]>) => {
+        success: (state, action: PayloadAction<Product[]>) => {
             state.loading = false
             state.errorMessage = ''
             state.products = action.payload

@@ -1,7 +1,9 @@
+import { Product } from "../models/product.model"
+
 export interface ProductsStateType {
     loading: boolean,
     errorMessage: string,
-    products: [] | null
+    products: Product[] | null
 }
 
 export const initialProductsState: ProductsStateType = {
