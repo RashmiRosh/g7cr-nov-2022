@@ -4,13 +4,14 @@ import { failureActionCreator, initiateActionCreator, successActionCreator } fro
 import { getAllProducts } from '../../../services/productService'
 import { AxiosResponse } from "axios";
 import { ApiResponse } from "../../../models/api-response.model";
-import FilterProduct from './filter-product/FilterProduct'
-import ProductCard from './product-card/ProductCard'
+// import FilterProduct from './filter-product/FilterProduct'
+// import ProductCard from './product-card/ProductCard'
 import { Product } from '../../../models/product.model';
+import { AppDispatch, RootState } from '../../../redux/store';
 
 const ProductList = () => {
-    const productState = useSelector((states: any) => states.product)
-    const dispatchFnRef = useDispatch()
+    const productState = useSelector((states: RootState) => states.product)
+    const dispatchFnRef = useDispatch<AppDispatch>()
 
     const { loading, errorMessage, products } = productState
 
@@ -49,7 +50,7 @@ const ProductList = () => {
         design = <span>Loading....</span>
     } else if (errorMessage !== '') {
         design = <span>{errorMessage}</span>
-    } else if (products !== null || products.length === 0) {
+    } else if (products === null || products.length === 0) {
         design = <span>No record found</span>
     } else {
         design = (
