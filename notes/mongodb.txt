@@ -64,3 +64,79 @@ $lte, $lte, $gte, $gt, $ne, $in, $nin, $and, $or,
 
 DbRef:
 $ref, $id, $db
+
+1. create db
+2. drop db (db.dropDatabase())
+3. create collection
+4. drop collection (db.colletion-name.drop())
+
+
+aggregation:
+	 type of aggregation
+		pipeline:[{}]
+
+db.col-name.aggregate([
+{
+	$<type>:{
+		from:
+		localField:
+		foreignField:
+		pipeline:[
+			filtration,
+			sort,
+			limit
+			skip
+		]
+		as:'report'
+	}
+}
+])
+
+[{
+	all fields from left
+	report:[{all fields from matching document in the right col},{}]
+},{
+}]
+db.col-name.find({
+	$and:[]
+})
+
+aggregate:
+	processes multiple documents from same or different collections and produces computed/aggregated result
+
+	a. group values from multiple douments
+	b. operations on that grouped result set
+	c. analyze data changes over time
+
+what you need to do in aggregation?
+	aggregation pipelines	
+	single purpose aggregation methods
+
+
+
+orders
+_id, amount, pizza, size, date, name
+
+[{_id:1, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+{_id:2, name:'amit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
+{_id:3, name:'gaurav',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()}]
+[{_id:4, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+{_id:5, name:'amit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
+{_id:6, name:'nikhil',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()}]
+[{_id:7, name:'suman',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+{_id:8, name:'ankit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
+]
+
+_id:a, names:[amit,ankit]
+_id:s, names:[sumit, suman]
+_id:g, names:[gaurav]
+_id:n, names:[nikhil]
+
+
+
+
+
+
+
+
+
