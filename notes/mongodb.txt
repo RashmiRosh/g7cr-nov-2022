@@ -1,0 +1,66 @@
+1. mongod.exe => Db engine (service)
+2. mongos
+3. mongosh => shell
+
+Sharding:
+scaling: horizontal and vertical
+replication
+
+data models:
+embeded model
+{
+	_id:ObjectId(....),
+	name:'',
+	price:,
+	category:{
+		_id:ObjectId(...),
+		name:''
+	}	
+}
+
+products: id (pk), ...., categoryid (fk)
+categories: id (pk), ....
+
+{
+	_id: ObjectId(...),
+	name:
+	mobile:
+	email:
+	addresses:{
+		homeaddress:{...},
+		deliveryaddress:[{...},{...},{...}]
+	}
+}
+
+relational-model:
+a. manual references
+customers:
+{
+	_id:ObjectId(....),
+	name:
+	mobile:
+	email:
+}
+addresses:
+{
+	_id:...,
+	customer_id:ObjectId(....)
+}
+
+b. DBRefs => $ref, $id, $db
+addresses:
+{
+	_id:...,
+	customer_id:{
+		$ref:'customers',
+		$db:'',
+		$id:ObjectId(....)
+	}
+}
+
+
+keywords: (operators)
+$lte, $lte, $gte, $gt, $ne, $in, $nin, $and, $or,
+
+DbRef:
+$ref, $id, $db
