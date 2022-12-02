@@ -117,20 +117,84 @@ what you need to do in aggregation?
 orders
 _id, amount, pizza, size, date, name
 
-[{_id:1, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+[
+{_id:1, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
 {_id:2, name:'amit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
-{_id:3, name:'gaurav',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()}]
-[{_id:4, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+{_id:3, name:'gaurav',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()},
+{_id:4, name:'sumit',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
 {_id:5, name:'amit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
-{_id:6, name:'nikhil',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()}]
-[{_id:7, name:'suman',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
-{_id:8, name:'ankit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()},
+{_id:6, name:'nikhil',pizza:'chicken pizza', size:'medium', amount:799, orde_date:Date()},
+{_id:7, name:'suman',pizza:'veg', size:'medium', amount:499, orde_date:Date()},
+{_id:8, name:'ankit',pizza:'non-veg', size:'small', amount:699, orde_date:Date()}
+]
+
+[
+  { _id: 'a', names: [ 'amit', 'ankit' ] },
+  { _id: 's', names: [ 'sumit', 'suman' ] }
 ]
 
 _id:a, names:[amit,ankit]
-_id:s, names:[sumit, suman]
 _id:g, names:[gaurav]
 _id:n, names:[nikhil]
+_id:s, names:[sumit, suman]
+
+db.pizza_orders.aggregate(
+[
+	{ 
+		$group: { 
+			_id: { $substr: ['$name', 0, 1] }, 
+			names: { $addToSet: {name:'$name',total:{ $sum: '$amount' }} }, 		
+		} 
+	},
+	{ 
+		$project: { 
+			_id: 1, 
+			names: {	
+				$filter:{
+					input:'$names',
+					as:'person',
+					cond:{
+						$gt:['$$person.total',800]
+					}
+				}
+			}
+		} 
+	}
+])
+
+a. aggregation commands
+	aggregate()
+	countDocuments()
+	mapReduce()
+	
+b. aggretaion stage operators (stages)
+	$group, $match, $sort, $project, $lookup, $merge (to be used as last stage) etc.
+
+c. aggregation expression operators to be used in stages
+	arithmatic:
+	$sum, $max, $min etc.
+
+	array operators:
+	$filter
+
+	boolean operators:
+
+
+db.pizza_orders.aggregate(
+[
+	{ 
+		$group: { 
+			_id: { $substr: ['$name', 0, 1] }, 
+			names: { $push: {name:'$name',total:{ $sum: '$amount' }} }, 		
+		} 
+	}	
+])
+
+lookup:
+
+	
+	
+
 
 
 

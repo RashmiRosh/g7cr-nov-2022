@@ -1,0 +1,17 @@
+(/products/:id)=>/products/view/1
+
+view:
+const p =useParams()
+{id:'1'}
+Number(p.id)
+
+Link
+
+products.map(
+(p)=>{
+return (<PC product={p}/>
+}
+
+(<Link to=`/products/view/${p.id}`>
+	<img>
+</Link)
