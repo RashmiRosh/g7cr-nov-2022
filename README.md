@@ -380,3 +380,163 @@
 </mat-selection-list>
 
 ```
+**Reference** https://material.angular.io/components/list/overview#list-selection
+
+
+### Pagination
+<img width="563" alt="Pagination" src="https://user-images.githubusercontent.com/117628227/229110771-6b5cef07-67c9-439c-a84e-b98f7c892022.png">
+
+```
+<mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+```
+**Reference** https://material.angular.io/components/paginator/overview#paginator-overview
+
+
+### Progress bar
+<img width="561" alt="Progress bar" src="https://user-images.githubusercontent.com/117628227/229111055-37a51a5e-a1e1-452e-97e8-ef58b82095c4.png">
+```
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+```
+**Reference** https://material.angular.io/components/progress-bar/overview#progress-bar-indeterminate
+
+
+### Horizontal stepper
+**Reference** https://angular-material.fusetheme.com/ui/forms/wizards
+
+### Spinner
+<img width="568" alt="Spinner" src="https://user-images.githubusercontent.com/117628227/229112477-aec7b9ea-8251-49cc-b59a-766f5d874d72.png">
+
+```
+<mat-spinner></mat-spinner>
+```
+**Reference** https://material.angular.io/components/progress-spinner/overview#progress-spinner-overview
+
+
+### Radios
+<img width="564" alt="Radio button" src="https://user-images.githubusercontent.com/117628227/229113060-d4c0b5b0-5b45-4a1e-a99e-31e667b12650.png">
+```
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Option 1</mat-radio-button>
+  <mat-radio-button value="2">Option 2</mat-radio-button>
+</mat-radio-group>
+```
+**Reference** https://material.angular.io/components/radio/overview#radio-overview
+
+
+### Slider
+```
+<mat-slide-toggle>Slide me!</mat-slide-toggle>
+```
+**Reference** https://material.angular.io/components/slide-toggle/overview#slide-toggle-overview
+
+
+### Alerts
+<img width="430" alt="AlertsFuse" src="https://user-images.githubusercontent.com/117628227/229114107-cdfc3972-7236-48fb-8a7e-b9637baeeed5.png">
+
+```
+<fuse-alert [type]="'primary'">
+    <span fuseAlertTitle>Primary alert</span>
+    Thank you for joining our newsletter
+</fuse-alert>
+
+<fuse-alert [type]="'accent'">
+    <span fuseAlertTitle>Accent alert</span>
+    Your changes has been saved
+</fuse-alert>
+
+<fuse-alert [type]="'warn'">
+    <span fuseAlertTitle>Warn alert</span>
+    Fill all required fields to proceed next step
+</fuse-alert>
+```
+**Reference** https://angular-material.fusetheme.com/ui/fuse-components/components/alert
+
+
+### Stepper
+<img width="568" alt="Stepper" src="https://user-images.githubusercontent.com/117628227/229114668-25dfbe60-e740-4c51-96b0-5636cd271130.png">
+
+```
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+    <form [formGroup]="secondFormGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+```
+**Reference** https://material.angular.io/components/stepper/overview#stepper-overview
+
+
+### Table
+<img width="559" alt="Table" src="https://user-images.githubusercontent.com/117628227/229115062-30a7a49d-8935-4d1d-ac27-a5d73f32efa5.png">
+```
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+```
+**Reference** https://material.angular.io/components/table/overview#table-pagination
