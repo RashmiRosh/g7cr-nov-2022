@@ -176,24 +176,102 @@
 ### Button Toggle 
 <img width="566" alt="Button toggle" src="https://user-images.githubusercontent.com/117628227/229098061-25a16e88-4893-436f-80d4-33e1d72b77a6.png">
 
+```
+<p>
+  Default appearance:
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="bold">Bold</mat-button-toggle>
+    <mat-button-toggle value="italic">Italic</mat-button-toggle>
+    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+  </mat-button-toggle-group>
+</p>
+
+<p>
+  Legacy appearance:
+  <mat-button-toggle-group appearance="legacy" name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="bold">Bold</mat-button-toggle>
+    <mat-button-toggle value="italic">Italic</mat-button-toggle>
+    <mat-button-toggle value="underline">Underline</mat-button-toggle>
+  </mat-button-toggle-group>
+</p>
+```
 **Reference** https://material.angular.io/components/button-toggle/overview#button-toggle-appearance
 
 
 ### Check box
 <img width="562" alt="Checkbox" src="https://user-images.githubusercontent.com/117628227/229098405-90b568aa-4024-44a5-a4cc-7a123a0a7ebd.png">
 
+```
+<section class="example-section">
+  <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+  <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+</section>
+
+<section class="example-section">
+  <span class="example-list-section">
+    <mat-checkbox class="example-margin"
+                  [checked]="allComplete"
+                  [color]="task.color"
+                  [indeterminate]="someComplete()"
+                  (change)="setAll($event.checked)">
+      {{task.name}}
+    </mat-checkbox>
+  </span>
+  <span class="example-list-section">
+    <ul>
+      <li *ngFor="let subtask of task.subtasks">
+        <mat-checkbox [(ngModel)]="subtask.completed"
+                      [color]="subtask.color"
+                      (ngModelChange)="updateAllComplete()">
+          {{subtask.name}}
+        </mat-checkbox>
+      </li>
+    </ul>
+  </span>
+</section>
+```
 **Reference** https://material.angular.io/components/checkbox/overview#checkbox-overview
 
 
 ### Basic Chip
 <img width="559" alt="Chip" src="https://user-images.githubusercontent.com/117628227/229098869-ab9c7158-57fe-4c00-b316-6895b43462e3.png">
 
+```
+<mat-chip-listbox aria-label="Fish selection">
+  <mat-chip-option>One fish</mat-chip-option>
+  <mat-chip-option>Two fish</mat-chip-option>
+  <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
+  <mat-chip-option color="warn">Warn fish</mat-chip-option>
+</mat-chip-listbox>
+```
 **Reference** https://material.angular.io/components/chips/overview#chips-overview
 
 
 ### Chip With Input
 <img width="561" alt="image" src="https://user-images.githubusercontent.com/117628227/229099130-c4e96b72-9efa-4d77-8521-2e8d6565d932.png">
 
+```
+<mat-form-field class="example-chip-list" appearance="fill">
+  <mat-label>Favorite Fruits</mat-label>
+  <mat-chip-grid #chipGrid aria-label="Enter fruits">
+    <mat-chip-row *ngFor="let fruit of fruits"
+                  (removed)="remove(fruit)"
+                  [editable]="true"
+                  (edited)="edit(fruit, $event)"
+                  [aria-description]="'press enter to edit ' + fruit.name">
+      {{fruit.name}}
+      <button matChipRemove [attr.aria-label]="'remove ' + fruit.name">
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip-row>
+    <input placeholder="New fruit..."
+           [matChipInputFor]="chipGrid"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)"/>
+  </mat-chip-grid>
+</mat-form-field>
+```
 **Reference** https://material.angular.io/components/chips/overview#chips-input
 
 
@@ -225,6 +303,18 @@
 </form>
 ```
 **Reference** https://material.angular.io/components/chips/overview#chips-autocomplete
+
+### Stacked chips
+<img width="562" alt="Stacked Chip" src="https://user-images.githubusercontent.com/117628227/229488603-b97ca78a-a413-4479-9418-cd4d5d8e6ded.png">
+
+```
+<mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+  <mat-chip-option *ngFor="let chip of availableColors" selected [color]="chip.color">
+    {{chip.name}}
+  </mat-chip-option>
+</mat-chip-listbox>
+```
+**Reference**  https://material.angular.io/components/chips/overview#chips-stacked
 
 
 ### Basic Datepicker
@@ -289,6 +379,33 @@
 ```
 **Reference** https://material.angular.io/components/dialog/overview#dialog-overview
 
+
+### Dialog box with extra condition
+<img width="401" alt="Dialog with condition" src="https://user-images.githubusercontent.com/117628227/229485883-e4922050-d7d5-4afb-9008-4f07c2978af3.png">
+
+```
+{
+  "title": "Remove contact",
+  "message": "Are you sure you want to remove this contact permanently? <span class=\"font-medium\">This action cannot be undone!</span>",
+  "icon": {
+    "show": true,
+    "name": "heroicons_outline:exclamation",
+    "color": "primary"
+  },
+  "actions": {
+    "confirm": {
+      "show": true,
+      "label": "Remove",
+      "color": "warn"
+    },
+    "cancel": {
+      "show": true,
+      "label": "Cancel"
+    }
+  },
+  "dismissible": true
+}
+```
 
 ### Basic Divider
 <img width="568" alt="image" src="https://user-images.githubusercontent.com/117628227/229104579-c0809bca-2413-45f5-a2a5-3f4c2e1d5539.png">
@@ -434,6 +551,8 @@
 
 
 ### Horizontal stepper
+<img width="596" alt="Horizontal stepper" src="https://user-images.githubusercontent.com/117628227/229482551-f3afd000-7299-467a-b5ae-22569392565a.png">
+
 **Reference** https://angular-material.fusetheme.com/ui/forms/wizards
 
 ### Spinner
@@ -447,6 +566,7 @@
 
 ### Radios
 <img width="564" alt="Radio button" src="https://user-images.githubusercontent.com/117628227/229113060-d4c0b5b0-5b45-4a1e-a99e-31e667b12650.png">
+
 ```
 <mat-radio-group aria-label="Select an option">
   <mat-radio-button value="1">Option 1</mat-radio-button>
@@ -457,6 +577,8 @@
 
 
 ### Slider
+<img width="563" alt="Slider" src="https://user-images.githubusercontent.com/117628227/229477417-d245177b-4f71-43be-9039-1f4d1c2df630.png">
+
 ```
 <mat-slide-toggle>Slide me!</mat-slide-toggle>
 ```
@@ -640,3 +762,114 @@
 </button>
 ```
 **Reference** https://material.angular.io/components/tooltip/overview#tooltip-overview
+
+
+### Tooltip with a custom position
+<img width="567" alt="Custom tooltip" src="https://user-images.githubusercontent.com/117628227/229480553-37d51365-a832-4896-a7f8-893053542b6c.png">
+
+```
+<mat-form-field class="example-user-input" appearance="fill">
+  <mat-label>Tooltip position</mat-label>
+  <mat-select [formControl]="position">
+    <mat-option *ngFor="let positionOption of positionOptions" [value]="positionOption">
+      {{positionOption}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<button mat-raised-button
+        matTooltip="Info about the action"
+        [matTooltipPosition]="position.value!"
+        aria-label="Button that displays a tooltip in various positions">
+  Action
+</button>
+```
+**Reference** https://material.angular.io/components/tooltip/overview#tooltip-position
+
+
+### Tooltip with a show and hide delay
+<img width="566" alt="Tool tip with delay" src="https://user-images.githubusercontent.com/117628227/229480819-3aedef81-9c4d-4cd9-8c82-a2ad93ddc19f.png">
+
+```
+<mat-form-field class="example-user-input" appearance="fill">
+  <mat-label>Show delay</mat-label>
+  <input matInput type="number" [formControl]="showDelay"
+         aria-label="Adds a delay between hovering over the button and displaying the tooltip">
+  <mat-hint>milliseconds</mat-hint>
+</mat-form-field>
+
+<mat-form-field class="example-user-input" appearance="fill">
+  <mat-label>Hide delay</mat-label>
+  <input matInput type="number" [formControl]="hideDelay"
+         aria-label="Adds a delay between hovering away from the button and hiding the tooltip">
+  <mat-hint>milliseconds</mat-hint>
+</mat-form-field>
+
+<button mat-raised-button matTooltip="Info about the action"
+        [matTooltipShowDelay]="showDelay.value"
+        [matTooltipHideDelay]="hideDelay.value"
+        aria-label="Button that displays a tooltip with a customized delay in showing and hiding">
+  Action
+</button>
+```
+**Reference** https://material.angular.io/components/tooltip/overview#tooltip-delay
+
+
+### Tree with flat nodes
+<img width="559" alt="Tree with flats" src="https://user-images.githubusercontent.com/117628227/229482942-5c4c80a5-18a3-4525-a188-6099f8ebda7c.png">
+
+```
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <button mat-icon-button disabled></button>
+    {{node.name}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.name}}
+  </mat-tree-node>
+</mat-tree>
+```
+**Reference** https://material.angular.io/components/tree/overview#tree-flat-overview
+
+
+###
+<img width="567" alt="Tree with nested nodes" src="https://user-images.githubusercontent.com/117628227/229483166-1e3b6488-e592-4510-b37e-082dd299e8d0.png">
+
+```
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+  <!-- This is the tree node template for leaf nodes -->
+  <!-- There is inline padding applied to this node using styles.
+    This padding value depends on the mat-icon-button width. -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      {{node.name}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle
+                [attr.aria-label]="'Toggle ' + node.name">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        {{node.name}}
+      </div>
+      <!-- There is inline padding applied to this div using styles.
+          This padding value depends on the mat-icon-button width.  -->
+      <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+          role="group">
+        <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+  </mat-nested-tree-node>
+</mat-tree>
+```
+**Reference** https://material.angular.io/components/tree/overview#tree-nested-overview
