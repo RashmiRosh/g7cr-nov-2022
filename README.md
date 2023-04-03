@@ -230,6 +230,17 @@
 ### Basic Datepicker
 <img width="566" alt="Basic Datepicker" src="https://user-images.githubusercontent.com/117628227/229101288-0d8fee21-e161-4a8d-8ff6-3fa165feb823.png">
 
+```
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-hint>MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker">
+    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+  </mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+```
 
 **Reference** https://material.angular.io/components/datepicker/overview#datepicker-overview
 
@@ -237,6 +248,23 @@
 ### Date Range
 <img width="567" alt="Date range" src="https://user-images.githubusercontent.com/117628227/229101608-233f1fa3-85c7-41aa-8b6f-9cfdb42a34f4.png">
 
+```
+<mat-form-field appearance="fill">
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+    <input matStartDate formControlName="start" placeholder="Start date">
+    <input matEndDate formControlName="end" placeholder="End date">
+  </mat-date-range-input>
+  <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+
+  <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+  <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+</mat-form-field>
+
+<p>Selected range: {{range.value | json}}</p>
+```
 **Reference** https://material.angular.io/components/datepicker/overview#date-range-picker-forms
 
 
@@ -398,6 +426,7 @@
 
 ### Progress bar
 <img width="561" alt="Progress bar" src="https://user-images.githubusercontent.com/117628227/229111055-37a51a5e-a1e1-452e-97e8-ef58b82095c4.png">
+
 ```
 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 ```
@@ -602,6 +631,7 @@
 
 ### Tooltip
 <img width="571" alt="ToolTip" src="https://user-images.githubusercontent.com/117628227/229475425-7ff17aba-6607-4a73-b50f-d543aef4aecf.png">
+
 ```
 <button mat-raised-button
         matTooltip="Info about the action"
