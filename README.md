@@ -380,7 +380,7 @@
 **Reference** https://material.angular.io/components/dialog/overview#dialog-overview
 
 
-### Dialog box with extra condition
+### Custom Dialog box 
 <img width="401" alt="Dialog with condition" src="https://user-images.githubusercontent.com/117628227/229485883-e4922050-d7d5-4afb-9008-4f07c2978af3.png">
 
 ```
