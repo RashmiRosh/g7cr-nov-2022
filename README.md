@@ -873,3 +873,12 @@
 </mat-tree>
 ```
 **Reference** https://material.angular.io/components/tree/overview#tree-nested-overview
+
+
+### Basic icons
+<img width="563" alt="Icon" src="https://user-images.githubusercontent.com/117628227/229489538-a4afa60f-14b7-41cf-a92e-f8af03498ef1.png">
+
+```
+<mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+```
+**Reference** https://material.angular.io/components/icon/overview#icon-overview
