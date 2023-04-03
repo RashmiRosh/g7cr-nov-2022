@@ -585,3 +585,28 @@
 </table>
 ```
 **Reference** https://material.angular.io/components/table/overview#table-sorting
+
+
+### Basic Tabs
+<img width="567" alt="Tabs" src="https://user-images.githubusercontent.com/117628227/229474581-b4cd3419-2d9b-4a59-9a49-2fa71cbdfd71.png">
+
+```
+<mat-tab-group>
+  <mat-tab label="First"> Content 1 </mat-tab>
+  <mat-tab label="Second"> Content 2 </mat-tab>
+  <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group>
+```
+**Reference** https://material.angular.io/components/tabs/overview#tab-group-basic
+
+
+### Tooltip
+<img width="571" alt="ToolTip" src="https://user-images.githubusercontent.com/117628227/229475425-7ff17aba-6607-4a73-b50f-d543aef4aecf.png">
+```
+<button mat-raised-button
+        matTooltip="Info about the action"
+        aria-label="Button that displays a tooltip when focused or hovered over">
+  Action
+</button>
+```
+**Reference** https://material.angular.io/components/tooltip/overview#tooltip-overview
