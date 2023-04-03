@@ -501,6 +501,7 @@
 
 ### Table
 <img width="559" alt="Table" src="https://user-images.githubusercontent.com/117628227/229115062-30a7a49d-8935-4d1d-ac27-a5d73f32efa5.png">
+
 ```
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource">
@@ -530,13 +531,57 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-row></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]">
   </mat-paginator>
 </div>
 ```
 **Reference** https://material.angular.io/components/table/overview#table-pagination
+
+
+### Table with sorting
+<img width="566" alt="Table with sort" src="https://user-images.githubusercontent.com/117628227/229473110-ab4ad865-80eb-4f67-a252-d9acc36d2c50.png">
+
+```
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+       class="mat-elevation-z8">
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by number">
+      No.
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name">
+      Name
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by weight">
+      Weight
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol">
+      Symbol
+    </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+```
+**Reference** https://material.angular.io/components/table/overview#table-sorting
