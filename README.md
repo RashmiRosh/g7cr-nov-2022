@@ -576,7 +576,7 @@
 **Reference** https://material.angular.io/components/radio/overview#radio-overview
 
 
-### Slider
+### Slider Toggle
 <img width="563" alt="Slider" src="https://user-images.githubusercontent.com/117628227/229477417-d245177b-4f71-43be-9039-1f4d1c2df630.png">
 
 ```
@@ -584,6 +584,15 @@
 ```
 **Reference** https://material.angular.io/components/slide-toggle/overview#slide-toggle-overview
 
+### Custom Slider
+<img width="562" alt="Custom slider" src="https://user-images.githubusercontent.com/117628227/229492940-23a3590a-8a38-48a1-8925-1c8de091b069.png">
+
+```
+<mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+  <input matSliderThumb>
+</mat-slider>
+```
+**Reference** https://material.angular.io/components/slider/overview#slider-formatting
 
 ### Alerts
 <img width="430" alt="AlertsFuse" src="https://user-images.githubusercontent.com/117628227/229114107-cdfc3972-7236-48fb-8a7e-b9637baeeed5.png">
@@ -649,6 +658,76 @@
 ```
 **Reference** https://material.angular.io/components/stepper/overview#stepper-overview
 
+
+### Custom Stepper
+<img width="565" alt="Custom stepper" src="https://user-images.githubusercontent.com/117628227/229493447-ff2b65e6-c3fc-4c5f-8258-39c17e135834.png">
+
+```
+<mat-stepper #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper>
+
+<mat-stepper>
+  <mat-step label="Step 1" state="phone">
+    <p>Put down your phones.</p>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Step 2" state="chat">
+    <p>Socialize with each other.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
+  <mat-step label="Step 3">
+    <p>You're welcome.</p>
+  </mat-step>
+
+  <!-- Icon overrides. -->
+  <ng-template matStepperIcon="phone">
+    <mat-icon>call_end</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="chat">
+    <mat-icon>forum</mat-icon>
+  </ng-template>
+</mat-stepper>
+```
+**Reference** https://material.angular.io/components/stepper/overview#stepper-states
 
 ### Table
 <img width="559" alt="Table" src="https://user-images.githubusercontent.com/117628227/229115062-30a7a49d-8935-4d1d-ac27-a5d73f32efa5.png">
@@ -882,3 +961,23 @@
 <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
 ```
 **Reference** https://material.angular.io/components/icon/overview#icon-overview
+
+
+### Multi select /Select with custom trigger text
+<img width="577" alt="Multiselect" src="https://user-images.githubusercontent.com/117628227/229492108-238df0f3-fd55-4618-afbf-a6971b2e7fb2.png">
+
+```
+<mat-form-field appearance="fill">
+  <mat-label>Toppings</mat-label>
+  <mat-select [formControl]="toppings" multiple>
+    <mat-select-trigger>
+      {{toppings.value?.[0] || ''}}
+      <span *ngIf="(toppings.value?.length || 0) > 1" class="example-additional-selection">
+        (+{{(toppings.value?.length || 0) - 1}} {{toppings.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+  </mat-select>
+</mat-form-field>
+```
+**Reference** https://material.angular.io/components/select/overview#select-custom-trigger
