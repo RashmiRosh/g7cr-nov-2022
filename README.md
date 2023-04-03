@@ -1,5 +1,5 @@
 
-# Default component 
+# Angular Components
 
 ### Autocomplete
 
