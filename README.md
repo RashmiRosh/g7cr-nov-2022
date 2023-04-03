@@ -516,14 +516,14 @@
 
 ```
 <mat-selection-list #shoes>
-  <mat-list-option>
-  Boots
-  </mat-list-option>
-  <mat-list-option>
-  Shoes
+  <mat-list-option *ngFor="let shoe of typesOfShoes">
+    {{shoe}}
   </mat-list-option>
 </mat-selection-list>
 
+<p>
+  Options selected: {{shoes.selectedOptions.selected.length}}
+</p>
 ```
 **Reference** https://material.angular.io/components/list/overview#list-selection
 
